@@ -1,63 +1,68 @@
+# Overview
+
 In this project I followed the given scenario.
 
 You are working as a Security Engineer for X-CORP, supporting the SOC infrastructure. The SOC analysts have noticed some discrepancies with alerting in the Kibana system and the manager has asked the Security Engineering team to investigate. 
 
 Flags have been hidden throughout the system. Your goal is to find find the flags and ultimately find the vulnerabilities in the system.
 
-Scan the network to identify the IP addresses of Target 1.
+## Scan the network to identify the IP addresses of Target 1.
 
-* nmmp image here
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/nmap_scan.png)
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/nmap_scan2.png)
 
-Document all exposed ports and services.
+## Document all exposed ports and services.
 
-* open port image here
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/Vuln_scan1.png)
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/Vuln_scan2.png)
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/Vuln_scan3.png)
 
+## Enumerate the WordPress site.
 
-Enumerate the WordPress site.
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/WordPress_scan.png)
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/WordPress_scan2.png)
 
-* word press image here
+## Use SSH to gain a user shell.
 
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/ssh_michael.png)
 
-Use SSH to gain a user shell.
+- Flag 1 found by searching HTML page source
 
-* ssh pic
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/flag1.png)
 
-Flag 1 found by searching HTML page source
-* flag1
+- Flag 2 found by using locate command
 
-Flag 2 found by using locate command
-* flag 2
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/findFlag.png)
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/flag2.png)
 
-Find the MySQL database password.
+## Find the MySQL database password.
 
-MySQL database password found by viewing the wp-config.php file in /var/www/html
+- MySQL database password found by viewing the wp-config.php file in /var/www/html
 
-* mysql image
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/MySql-info.png)
 
+## Use the credentials to log into MySQL and dump WordPress user password hashes.
 
-Use the credentials to log into MySQL and dump WordPress user password hashes.
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/passwordHash.png)
 
-* password hashes
+## Crack password hashes with john.
 
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/crackedHash.png)
 
-Crack password hashes with john.
+- Flag 3 can be found inside the MySQL Database
 
-* crack hash image
-
-Flag 3 can be found inside the MySQL Database
-
-* flag 3 image
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/flag3.png)
  
+## Secure a user shell as the user whose password you cracked.
 
-Secure a user shell as the user whose password you cracked.
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/ssh_steven.png)
 
-* ssh steven image
+## Escalate to root privileges.
 
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/python-root.png)
 
-Escalate to root. One flag can be discovered after this step.
+- Flag 4 found in root folder of user Steven.
 
-* python root image
+![Screenshot](https://github.com/jboyd72/Red_Team_Project/blob/main/images/flag4.png)
 
-Flag 4 found in root folder of user Steven.
-
-* Flag 4
+- After expoliting the vulnerabilities to find all 4 flags, the team presented our findings to the SOC manager for further analysis.
